@@ -1,0 +1,24 @@
+<marquee>
+    <div class="holder">
+        <ul id="ticker01"><% if(articles != null) { %>
+                <% articles.forEach(function(article, index) { %>
+                    <a href="<%- article.url %> " target="__blank" loading="lazy"><span style="color: rgb(255, 255, 255);"><%- article.source %> :</span>&nbsp;<%- article.title %></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <% }) %>
+            <% } %>
+        </ul>
+    </div>
+</marquee>
+
+<style>
+    marquee{
+        background-color: rgba(80, 46, 97, 0.82);
+        width: auto;
+        height: 2rem;
+        
+    }
+    .holder ul a{
+        text-decoration: none;
+        color: rgb(255, 221, 0);
+    }
+</style>

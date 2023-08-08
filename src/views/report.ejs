@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="master.css">
+    
+</head>
+<body>
+    <%- include('header') -%>
+    <div id="google_translate_element"></div>
+
+    <div class="container contact-form">
+        <form class="col-12 col-md-8" method="post"  id="contactForm"><h2 style="color: black;">Report Us</h2>
+            <div class="form-group">
+                <label for="name" style="color: black;">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter  your Name" style="font-size: 14px;" required>
+            </div>
+            <div class="form-group">
+                <label for="email" style="color: black;">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email" style="font-size: 14px;" required>
+            </div>
+            <div class="form-group">
+                <label for="Message" style="color: black;">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="6" placeholder="Enter your message or query" style="font-size: 14px;" required></textarea>
+            </div>
+            <br>
+            <div class="float-right" > 
+                <button type="submit" onclick="contact()" class="btn btn-primary btn-lg">Send</button>
+            </div>
+        </form>
+        <div id="response"></div>
+    </div>
+    <%- include('footer') -%> 
+    <script src="contact.js"></script>
+    <script src="script.js"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+1. First install these packages using this command 
+	npm i axios body-parser bootstrap bootstrap-icons connect-mongo dotenv ejs express express-session mongoose mongoose nodemailer-smtp-transport nodemon passport passport-local passport-local-mongoose path
+2. To run the projet follow the command 
+	npm start or npm dev and follow the "url"

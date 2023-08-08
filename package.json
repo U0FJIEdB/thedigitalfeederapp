@@ -1,0 +1,32 @@
+{
+  "name": "thedigitalnewsfeeder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Sai Ganesh Reddy Buthukuri",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
+    "bootstrap": "^5.1.3",
+    "bootstrap-icons": "^1.8.3",
+    "connect-mongo": "^4.6.0",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "mongoose": "^6.4.0",
+    "nodemailer": "^6.7.4",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "nodemon": "^2.0.18",
+    "passport": "^0.5.3",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^7.1.2",
+    "path": "^0.12.7"
+  }
+}

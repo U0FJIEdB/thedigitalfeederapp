@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="master.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#form1").submit(function(event) {
+                event.preventDefault()
+                $.ajax({
+                    type: 'POST',
+                    url: '/register',
+                    data: $('#form1').serialize(),
+                    dataType: "json",
+                    success: function(response){
+                        //alert("a");
+                        //console.log(response.Success);
+                        $('#form1')[0].reset();
+                        document.getElementById("check").innerHTML=response.Success
+                            //ADD THIS CODE
+                            setTimeout(function(){
+                                document.getElementById("check").innerHTML=""
+                            },3000)
+                            if (response.Success=="You are regestered,You can login now.") {
+                                document.getElementById("aa").click()
+                            }
+                        },
+                        error: function() {
+                        }
+                    })
+            })
+        })
+    </script>
+</head>
+<body>
+    
+    <%- include('header') -%>
+    <div class="contact-top"></div>
+    <div class="container contact-form">
+        <form id="form1" class="col-12 col-md-8" method="post">
+            <h2 style="color: black;">Sign-up</h2>
+            <div class="form-group">
+                <label for="name" style="color: black;">name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="name" style="color: black;">email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="enter your email" required>
+            </div>
+            <div class="form-group" style="color: black;">
+                <label for="Password">Password</label>
+                <input type="Password" class="form-control" id="Password" name="Password" placeholder="enter Password" required>
+            </div>
+            <div class="form-group" style="color: black;">
+                <label for="Password">Confirm Password</label>
+                <input type="Password" class="form-control" id="Re-Password" name="RePassword" placeholder="Confirm Password" required>
+            </div>
+            <br>
+            <div class="float-right"> 
+                <input type="submit" value="signup" class="btn btn-success">
+            </div>
+            <div class="mssg bg-danger">
+                <span id="check"></span>
+            </div>
+            <div>
+                <span style="color: black;">Already Registered! <a href="./signin">sign-in</a></span>
+            </div>
+            <div id="LangTable"><a href="/register" id="aa"></a>
+            </div>
+        </form>
+        
+
+    </div>
+    </div>
+    <%- include('footer') -%> 
+</body>
+</html>

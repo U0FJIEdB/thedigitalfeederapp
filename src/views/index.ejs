@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="master.css">
+    <title>The digital News Feeder</title>
+</head>
+<body>
+    <%- include('header')%>
+    <%- include('banner') -%>
+    <div id="google_translate_element"></div>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <div class="wrapper">
+        <div class="news" id="newsArticles">
+            <% if(articles != null) { %>
+                <% articles.forEach(function(article, index) { %>
+                    <div class="news_card">
+                        <a href="<%- article.url %> " target="__blank" loading="lazy">
+                            &nbsp;<h4><%- article.title %></h4> <br>
+                            <p style="color: black;">
+                                <%- article.description %> <br> 
+                                <b style="color:rgb(39, 146, 192);">
+                                    <%- article.source %>
+                                </b>
+                                <p><%- article.time %></p>
+                            </p>&nbsp;
+                            <a href="https://api.whatsapp.com/send/?text=<%- article.url %>" data-action="share/whatsapp/share" title="Share on Whatsapp">
+                                <i class="bi bi-whatsapp" style="color:green;"></i>
+                            </a> &nbsp;
+                            <a href="https://twitter.com/intent/tweet?url=<%- article.url %>" 
+                                target="_blank" data-action="share/twitter/share"
+                                onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                                title="Share on Twitter"><i class="bi bi-twitter"></i>
+                            </a>&nbsp;
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=<%- article.url %>&t=<%- article.title %>"
+                                onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                                target="_blank" title="Share on Facebook"><i class="bi bi-facebook"></i>
+                            </a>
+                        </a>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                No posts found.
+            <% } %>
+        </div>   
+
+    <%- include('footer') -%>
+    <script src="script.js"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

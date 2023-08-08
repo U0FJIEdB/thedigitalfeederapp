@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="master.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#form").submit(function(event) {
+                event.preventDefault()
+                $.ajax({
+                    type: 'POST',
+                    url: '/signin',
+                    data: $('#form').serialize(),
+                    dataType: 'json',
+                    success: function(response){
+                        //alert("a")
+                        //console.log(response.Success);
+                        $('#form')[0].reset()
+                        document.getElementById("check").innerHTML=response.Success
+                        setTimeout(function(){document.getElementById("check").innerHTML=""},30000)
+                        if (response.Success=="Success!") {
+                            document.getElementById("aa").click()
+                        }
+                    },
+                    error: function() {}
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <%- include('header') -%>
+    <div class="contact-top"></div>
+    
+        <div class="container contact-form">
+            <form class="col-12 col-md-8" method="post" id="form">
+                <h2 style="color: black;">Sign-in</h2>
+                <div class="form-group">
+                    <label for="name" style="color: black;">email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="enter your email" required>
+                </div>
+                <div class="form-group" style="color: black;">
+                    <label for="Password">Password</label>
+                    <input type="Password" class="form-control" id="Password" name="Password" placeholder="enter your Password" required>
+                </div>
+                <br>
+                <div class="float-right"> 
+                    <input type="submit" value="signin" class="btn btn-success">
+                </div>
+                <p style="color: black;">not yet registered...! <a href="./register">try here</a></p>
+                <div class="mssg bg-danger">
+                    <span id="check" ></span>
+                </div>
+                <div id="LangTable"><a href="/index" id="aa"></a></div>
+                
+            </form>
+        </div>
+   
+    
+    <%- include('footer') -%> 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</body>
+</html>
